@@ -1,12 +1,14 @@
 package upqnu.scwhim.employee.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import upqnu.scwhim.team.entity.Team;
 
 import java.time.LocalDate;
 
 @Entity
+@Getter
 @NoArgsConstructor
 public class Employee {
 
@@ -17,7 +19,7 @@ public class Employee {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private String teamName;
 
     @Column(nullable = false)

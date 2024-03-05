@@ -3,11 +3,14 @@ package upqnu.scwhim.employee.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import upqnu.scwhim.employee.dto.EmployeeInfoResponse;
+import upqnu.scwhim.employee.dto.EmployeeInfoResDto;
 import upqnu.scwhim.employee.dto.EmployeeJoinReqDto;
+import upqnu.scwhim.employee.dto.EmployeeModifyReqDto;
+import upqnu.scwhim.employee.dto.EmployeePositionReqDto;
 import upqnu.scwhim.employee.entity.Employee;
 import upqnu.scwhim.employee.repository.EmployeeRepository;
+import upqnu.scwhim.team.entity.Team;
+import upqnu.scwhim.team.repository.TeamRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,7 @@ import java.util.List;
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final TeamRepository teamRepository;
 
     @Transactional
     public void joinEmployee(EmployeeJoinReqDto request) {
@@ -24,27 +28,53 @@ public class EmployeeService {
     }
 
     @Transactional
-    public EmployeeInfoResponse showEmployee(Long employeeId) {
+    public EmployeeInfoResDto showEmployee(Long employeeId) {
         Employee employee = employeeRepository.findById(employeeId)
                 .orElseThrow(IllegalArgumentException::new);
 
-        EmployeeInfoResponse response = new EmployeeInfoResponse(
-                employee.getName(), employee.getTeamName(), employee.getWorkstartDate(),
-                employee.getBirthday(), employee.getTeam(), employee.getRole()
+        EmployeeInfoResDto response = new EmployeeInfoResDto(
+                employee.getName(), employee.getTeamName(), employee.getRole(), employee.getWorkstartDate(), employee.getBirthday()
         );
 
         return response;
     }
 
     @Transactional
-    public List<EmployeeInfoResponse> showAllEmployees() {
+    public List<EmployeeInfoResDto> showAllEmployees() {
         List<Employee> empolyees = employeeRepository.findAll();
-        List<EmployeeInfoResponse> allEmployees = new ArrayList<>();
+        List<EmployeeInfoResDto> allEmployees = new ArrayList<>();
         for (Employee e : empolyees) {
-            allEmployees.add(new EmployeeInfoResponse(
-                    e.getName(), e.getTeamName(), e.getWorkstartDate(), e.getBirthday(), e.getTeam(), e.getRole()
+            allEmployees.add(new EmployeeInfoResDto(
+                    e.getName(), e.getTeamName(), e.getRole(), e.getWorkstartDate() ,e.getBirthday()
             ));
         }
         return allEmployees;
+    }
+
+    @Transactional
+    public void modifyEmployee(Long employeeId, EmployeeModifyReqDto request) {
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        employee.modifyEmployee(
+                request.getName(), request.getWorkstartDate(), request.getBirthday());
+    }
+
+    @Transactional
+    public void setEmployeePosition(Long employeeId, EmployeePositionReqDto request) {
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        Team team = teamRepository.findByName(request.getTeamName());
+
+        employee.modifyEmployeePosition(request.getRole(), team, request.getTeamName());
+    }
+
+    @Transactional
+    public void deleteEmployee(Long employeeId) {
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        employeeRepository.deleteById(employeeId);
     }
 }

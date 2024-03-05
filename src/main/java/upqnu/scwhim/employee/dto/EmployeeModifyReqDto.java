@@ -3,25 +3,17 @@ package upqnu.scwhim.employee.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import upqnu.scwhim.employee.entity.Role;
-import upqnu.scwhim.team.entity.Team;
 
 import java.time.LocalDate;
 
 @Getter
-//@Setter
+@Setter
 @AllArgsConstructor
-public class EmployeeInfoResponse {
+public class EmployeeModifyReqDto {
 
     private String name;
-
-    private String teamName;
 
     private LocalDate workstartDate;
 
     private LocalDate birthday;
-
-    private Team team;
-
-    private Role role;
 }

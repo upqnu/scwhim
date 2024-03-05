@@ -2,6 +2,7 @@ package upqnu.scwhim.team.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import upqnu.scwhim.team.dto.TeamInfoResponse;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/team")
 @RequiredArgsConstructor
+@Tag(name = "Team", description = "Team API")
 public class TeamController {
 
     private final TeamService teamService;
@@ -50,5 +52,28 @@ public class TeamController {
     public List<TeamInfoResponse> showAllTeams() {
         List<TeamInfoResponse> responses = teamService.showAllTeams();
         return responses;
+    }
+
+    /**
+     * 팀 이름 변경
+     * @param teamId
+     * @param newTeamName
+     */
+    @Operation(summary = "팀 이름 변경", description = "개별 팀의 이름을 변경합니다")
+    @Parameter(name = "teamId / newTeamName", description = "개별 팀 이름 변경 시, 해당 팀의 id 필수 입력 / 변경해야 할 팀 이름은 request body로 입력")
+    @PatchMapping("/{teamId}")
+    public void modifyTeamName(@PathVariable Long teamId, @RequestBody String newTeamName) {
+        teamService.modifyTeamName(teamId, newTeamName);
+    }
+
+    /**
+     * 특정 팀 삭제
+     * @param teamId
+     */
+    @Operation(summary = "특정 팀 삭제", description = "특정 팀을 삭제합니다")
+    @Parameter(name = "teamId", description = "특정 팀 삭제 시, 해당 팀의 id 필수 입력")
+    @DeleteMapping("/{teamId}")
+    public void deleteTeam(@PathVariable Long teamId) {
+        teamService.deleteTeam(teamId);
     }
 }

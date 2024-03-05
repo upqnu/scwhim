@@ -30,4 +30,8 @@ public class Team {
     public Team(String name) {
         this.name = name;
     }
+
+    public void modifyTeamName(String newTeamName) {
+        this.name = newTeamName;
+    }
 }

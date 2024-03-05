@@ -44,4 +44,20 @@ public class TeamService {
         }
         return allTeams;
     }
+
+    @Transactional
+    public void modifyTeamName(Long teamId, String newTeamName) {
+        Team team = teamRepository.findById(teamId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        team.modifyTeamName(newTeamName);
+    }
+
+    @Transactional
+    public void deleteTeam(Long teamId) {
+        Team team = teamRepository.findById(teamId)
+                .orElseThrow(IllegalArgumentException::new);
+
+        teamRepository.deleteById(teamId);
+    }
 }

@@ -19,7 +19,6 @@ public class Employee {
     @Column(nullable = false)
     private String name;
 
-//    @Column(nullable = false)
     private String teamName;
 
     @Column(nullable = false)
@@ -38,5 +37,18 @@ public class Employee {
         this.name = name;
         this.workstartDate = workstartDate;
         this.birthday = birthday;
+    }
+
+    public void modifyEmployee(
+            String name, LocalDate workstartDate, LocalDate birthday) {
+        this.name = name;
+        this.workstartDate = workstartDate;
+        this.birthday = birthday;
+    }
+
+    public void modifyEmployeePosition(Role role, Team team, String teamName) {
+        this.role = role;
+        this.team = team;
+        this.teamName = teamName;
     }
 }

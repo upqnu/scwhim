@@ -9,6 +9,9 @@ import upqnu.scwhim.employee.dto.EmployeeJoinReqDto;
 import upqnu.scwhim.employee.entity.Employee;
 import upqnu.scwhim.employee.repository.EmployeeRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class EmployeeService {
@@ -31,5 +34,17 @@ public class EmployeeService {
         );
 
         return response;
+    }
+
+    @Transactional
+    public List<EmployeeInfoResponse> showAllEmployees() {
+        List<Employee> empolyees = employeeRepository.findAll();
+        List<EmployeeInfoResponse> allEmployees = new ArrayList<>();
+        for (Employee e : empolyees) {
+            allEmployees.add(new EmployeeInfoResponse(
+                    e.getName(), e.getTeamName(), e.getWorkstartDate(), e.getBirthday(), e.getTeam(), e.getRole()
+            ));
+        }
+        return allEmployees;
     }
 }

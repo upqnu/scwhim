@@ -10,6 +10,9 @@ import upqnu.scwhim.team.dto.TeamRegisterReqDto;
 import upqnu.scwhim.team.entity.Team;
 import upqnu.scwhim.team.repository.TeamRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TeamService {
@@ -28,5 +31,17 @@ public class TeamService {
 
         TeamInfoResponse response = new TeamInfoResponse(team.getName(), team.getManager(), team.getMemberCount());
         return response;
+    }
+
+    @Transactional
+    public List<TeamInfoResponse> showAllTeams() {
+        List<Team> teams = teamRepository.findAll();
+        List<TeamInfoResponse> allTeams = new ArrayList<>();
+        for (Team t : teams) {
+            allTeams.add(new TeamInfoResponse(
+                    t.getName(), t.getManager(), t.getMemberCount()
+            ));
+        }
+        return allTeams;
     }
 }

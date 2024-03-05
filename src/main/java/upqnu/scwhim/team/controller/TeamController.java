@@ -8,6 +8,8 @@ import upqnu.scwhim.team.dto.TeamInfoResponse;
 import upqnu.scwhim.team.dto.TeamRegisterReqDto;
 import upqnu.scwhim.team.service.TeamService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/team")
 @RequiredArgsConstructor
@@ -37,5 +39,16 @@ public class TeamController {
     public TeamInfoResponse showTeam(@PathVariable Long teamId) {
         TeamInfoResponse response = teamService.showTeam(teamId);
         return response;
+    }
+
+    /**
+     * 모든 팀 조회
+     * @return
+     */
+    @Operation(summary = "모든 팀 조회", description = "모든 팀을 조회합니다")
+    @GetMapping("")
+    public List<TeamInfoResponse> showAllTeams() {
+        List<TeamInfoResponse> responses = teamService.showAllTeams();
+        return responses;
     }
 }

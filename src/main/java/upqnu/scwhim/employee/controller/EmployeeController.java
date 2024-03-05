@@ -9,6 +9,8 @@ import upqnu.scwhim.employee.dto.EmployeeInfoResponse;
 import upqnu.scwhim.employee.dto.EmployeeJoinReqDto;
 import upqnu.scwhim.employee.service.EmployeeService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/employee")
 @RequiredArgsConstructor
@@ -39,5 +41,16 @@ public class EmployeeController {
     public EmployeeInfoResponse showEmployee(@PathVariable Long employeeId) {
         EmployeeInfoResponse response = employeeService.showEmployee(employeeId);
         return response;
+    }
+
+    /**
+     * 모든 직원 조회
+     * @return
+     */
+    @Operation(summary = "모든 직원 조회", description = "모든 직원을 조회합니다")
+    @GetMapping("")
+    public List<EmployeeInfoResponse> showAllEmployees() {
+        List<EmployeeInfoResponse> responses = employeeService.showAllEmployees();
+        return responses;
     }
 }

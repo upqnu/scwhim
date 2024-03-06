@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import upqnu.scwhim.employee.entity.Employee;
+import upqnu.scwhim.employee.repository.EmployeeRepository;
 import upqnu.scwhim.team.dto.TeamInfoResponse;
 import upqnu.scwhim.team.dto.TeamRegisterReqDto;
 import upqnu.scwhim.team.entity.Team;
@@ -18,6 +20,7 @@ import java.util.List;
 public class TeamService {
 
     private final TeamRepository teamRepository;
+    private final EmployeeRepository employeeRepository;
 
     @Transactional
     public void createTeam(@RequestBody TeamRegisterReqDto request) {
@@ -29,7 +32,17 @@ public class TeamService {
         Team team = teamRepository.findById(teamId)
                 .orElseThrow(IllegalArgumentException::new);
 
-        TeamInfoResponse response = new TeamInfoResponse(team.getName(), team.getManager(), team.getMemberCount());
+        List<Employee> managers = employeeRepository.findAll();
+        String managerName = "";
+        int memberCount = 0;
+        for (Employee e : managers) {
+            if (e.getTeamName().equals(team.getName())) {
+                managerName = e.getName();
+                memberCount++;
+            }
+        }
+
+        TeamInfoResponse response = new TeamInfoResponse(team.getName(), managerName, memberCount);
         return response;
     }
 

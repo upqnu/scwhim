@@ -34,4 +34,8 @@ public class Team {
     public void modifyTeamName(String newTeamName) {
         this.name = newTeamName;
     }
+
+    public void setTeamManagerName(String name) {
+        this.manager = name;
+    }
 }

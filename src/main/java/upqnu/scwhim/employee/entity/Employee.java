@@ -30,7 +30,8 @@ public class Employee {
     @Enumerated
     private Role role;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
+    @JoinColumn(name = "team_id")
     private Team team;
 
     public Employee(String name, LocalDate workstartDate, LocalDate birthday) {

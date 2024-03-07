@@ -1,6 +1,7 @@
 package upqnu.scwhim.team.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import upqnu.scwhim.employee.entity.Employee;
 
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Getter
 @NoArgsConstructor
 public class Team {
 
@@ -27,5 +29,13 @@ public class Team {
 
     public Team(String name) {
         this.name = name;
+    }
+
+    public void modifyTeamName(String newTeamName) {
+        this.name = newTeamName;
+    }
+
+    public void setTeamManagerName(String name) {
+        this.manager = name;
     }
 }

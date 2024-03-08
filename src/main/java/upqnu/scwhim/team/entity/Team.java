@@ -22,7 +22,7 @@ public class Team {
 
     private Integer memberCount;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "team")
     private List<Employee> teamCrews = new ArrayList<>();
 
     public Team(String name) {

@@ -1,4 +1,4 @@
-package upqnu.scwhim.team.dto;
+package upqnu.scwhim.domain.team.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

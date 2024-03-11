@@ -1,16 +1,16 @@
-package upqnu.scwhim.employee.service;
+package upqnu.scwhim.domain.employee.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import upqnu.scwhim.employee.dto.EmployeeInfoResDto;
-import upqnu.scwhim.employee.dto.EmployeeJoinReqDto;
-import upqnu.scwhim.employee.dto.EmployeeModifyReqDto;
-import upqnu.scwhim.employee.dto.EmployeePositionReqDto;
-import upqnu.scwhim.employee.entity.Employee;
-import upqnu.scwhim.employee.repository.EmployeeRepository;
-import upqnu.scwhim.team.entity.Team;
-import upqnu.scwhim.team.repository.TeamRepository;
+import upqnu.scwhim.domain.employee.dto.EmployeeInfoResDto;
+import upqnu.scwhim.domain.employee.dto.EmployeeModifyReqDto;
+import upqnu.scwhim.domain.employee.repository.EmployeeRepository;
+import upqnu.scwhim.domain.employee.dto.EmployeeJoinReqDto;
+import upqnu.scwhim.domain.employee.dto.EmployeePositionReqDto;
+import upqnu.scwhim.domain.employee.entity.Employee;
+import upqnu.scwhim.domain.team.entity.Team;
+import upqnu.scwhim.domain.team.repository.TeamRepository;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,16 +1,16 @@
-package upqnu.scwhim.team.service;
+package upqnu.scwhim.domain.team.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import upqnu.scwhim.employee.entity.Employee;
-import upqnu.scwhim.employee.repository.EmployeeRepository;
-import upqnu.scwhim.team.dto.TeamInfoResponse;
-import upqnu.scwhim.team.dto.TeamRegisterReqDto;
-import upqnu.scwhim.team.entity.Team;
-import upqnu.scwhim.team.repository.TeamRepository;
+import upqnu.scwhim.domain.employee.entity.Employee;
+import upqnu.scwhim.domain.employee.repository.EmployeeRepository;
+import upqnu.scwhim.domain.team.entity.Team;
+import upqnu.scwhim.domain.team.dto.TeamInfoResponse;
+import upqnu.scwhim.domain.team.dto.TeamRegisterReqDto;
+import upqnu.scwhim.domain.team.repository.TeamRepository;
 
 import java.util.ArrayList;
 import java.util.List;

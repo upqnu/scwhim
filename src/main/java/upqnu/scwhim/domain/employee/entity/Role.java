@@ -1,4 +1,4 @@
-package upqnu.scwhim.employee.entity;
+package upqnu.scwhim.domain.employee.entity;
 
 import lombok.Getter;
 

@@ -1,15 +1,15 @@
-package upqnu.scwhim.employee.controller;
+package upqnu.scwhim.domain.employee.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import upqnu.scwhim.employee.dto.EmployeeInfoResDto;
-import upqnu.scwhim.employee.dto.EmployeeJoinReqDto;
-import upqnu.scwhim.employee.dto.EmployeeModifyReqDto;
-import upqnu.scwhim.employee.dto.EmployeePositionReqDto;
-import upqnu.scwhim.employee.service.EmployeeService;
+import upqnu.scwhim.domain.employee.dto.EmployeeInfoResDto;
+import upqnu.scwhim.domain.employee.dto.EmployeeModifyReqDto;
+import upqnu.scwhim.domain.employee.service.EmployeeService;
+import upqnu.scwhim.domain.employee.dto.EmployeeJoinReqDto;
+import upqnu.scwhim.domain.employee.dto.EmployeePositionReqDto;
 
 import java.util.List;
 

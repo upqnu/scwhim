@@ -1,9 +1,8 @@
-package upqnu.scwhim.employee.dto;
+package upqnu.scwhim.domain.employee.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import upqnu.scwhim.employee.entity.Role;
-import upqnu.scwhim.team.entity.Team;
+import upqnu.scwhim.domain.employee.entity.Role;
 
 import java.time.LocalDate;
 

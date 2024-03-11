@@ -1,13 +1,13 @@
-package upqnu.scwhim.team.controller;
+package upqnu.scwhim.domain.team.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import upqnu.scwhim.team.dto.TeamInfoResponse;
-import upqnu.scwhim.team.dto.TeamRegisterReqDto;
-import upqnu.scwhim.team.service.TeamService;
+import upqnu.scwhim.domain.team.dto.TeamInfoResponse;
+import upqnu.scwhim.domain.team.dto.TeamRegisterReqDto;
+import upqnu.scwhim.domain.team.service.TeamService;
 
 import java.util.List;
 

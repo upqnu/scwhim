@@ -21,9 +21,10 @@ public class WorkRecord extends BaseEntity {
     @Column(updatable = false)
     private LocalDate workDate;
 
-    @Column(updatable = false)
+//    @Column(updatable = false)
     private LocalDateTime punchInTime;
 
+//    @Column(updatable = false)
     private LocalDateTime goHomeTime;
 
     @ManyToOne
@@ -34,5 +35,13 @@ public class WorkRecord extends BaseEntity {
         this.punchInTime = punchInTime;
         this.goHomeTime = goHomeTime;
         this.employee = employee;
+    }
+
+    public void logPunchInTime(LocalDateTime punchInTime) {
+        this.punchInTime = punchInTime;
+    }
+
+    public void logGoHomeTime(LocalDateTime goHomeTime) {
+        this.goHomeTime = goHomeTime;
     }
 }
